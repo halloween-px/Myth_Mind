@@ -1,11 +1,11 @@
 import { Container } from '@/components/layout/container';
 
-export const Hero = () => {
+const MainPage = () => {
 	return (
 		<section>
-			<Container>
-				<div>Лендинг</div>
-			</Container>
+			<Container>Главная</Container>
 		</section>
 	);
 };
+
+export default MainPage;

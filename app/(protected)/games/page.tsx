@@ -1,11 +1,11 @@
 import { Container } from '@/components/layout/container';
 
-export const Hero = () => {
+const GamesPage = () => {
 	return (
 		<section>
-			<Container>
-				<div>Лендинг</div>
-			</Container>
+			<Container>Игры</Container>
 		</section>
 	);
 };
+
+export default GamesPage;

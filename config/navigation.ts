@@ -1,3 +1,5 @@
+import { routesConfig } from './routes';
+
 export type TNavigation = {
 	label: string;
 	href: string;
@@ -6,14 +8,14 @@ export type TNavigation = {
 export const navigationConfig: TNavigation[] = [
 	{
 		label: 'Главная',
-		href: '/',
+		href: routesConfig.main,
 	},
 	{
 		label: 'Персонажи',
-		href: '/heroes',
+		href: routesConfig.heroes,
 	},
 	{
 		label: 'Игры',
-		href: '/games',
+		href: routesConfig.games,
 	},
 ];

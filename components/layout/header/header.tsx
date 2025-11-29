@@ -1,3 +1,4 @@
+'use client';
 import { ShirtIcon } from 'lucide-react';
 import Link from 'next/link';
 import {
@@ -9,16 +10,22 @@ import { Button } from '../../ui/button';
 import { Container } from '../container';
 import { navigationConfig } from '@/config/navigation';
 import { MobileMenu } from './mobile-menu';
+import { routesConfig } from '@/config/routes';
+import { useUserContext } from '@/hooks/useUser';
 
 export const Header = () => {
+	const context = useUserContext();
+
 	return (
 		<header>
 			<Container>
-				<div className='flex h-20 w-full shrink-0 items-center'>
+				<div className='flex h-header w-full shrink-0 items-center'>
 					<MobileMenu navigation={navigationConfig} />
-					<Link href='#' className='mr-6 hidden lg:flex' prefetch={false}>
+					<Link
+						href={routesConfig.home}
+						className='mr-6 hidden lg:flex'
+						prefetch={false}>
 						<ShirtIcon className='h-6 w-6' />
-						<span className='sr-only'>ShadCN</span>
 					</Link>
 					<NavigationMenu className='hidden lg:flex'>
 						<NavigationMenuList>
@@ -37,8 +44,18 @@ export const Header = () => {
 						</NavigationMenuList>
 					</NavigationMenu>
 					<div className='ml-auto flex gap-2'>
-						<Button variant='outline'>Sign in</Button>
-						<Button>Sign Up</Button>
+						{!context?.user ? (
+							<>
+								<Button variant='outline'>
+									<Link href={routesConfig.login}>Войти</Link>
+								</Button>
+								<Button>
+									<Link href={routesConfig.register}>Регистрация</Link>
+								</Button>
+							</>
+						) : (
+							'Профиль'
+						)}
 					</div>
 				</div>
 			</Container>
